@@ -6,8 +6,30 @@ class Doador extends Pessoa {
   final String tipoSanguineo;
   final String? observacaoMedica; //pd ser nulo
 
+  //Construtor
 
+  Doador({
+    required String nome,
+    required String cpf,
+    required int rg,
+    required DateTime dataNascimento,
+    required this.id,
+    required this.tipoSanguineo,
+    this.observacaoMedica,
+  })
 
+  bool verificarElegibilidade() {
+    final hoje = DateTime.now();
+    int idade = hoje.year - dataNascimento.year;
+    if (hoje.month < dataNascimento.month || (hoje.month == dataNascimento.month && hoje.day < dataNascimento.day)) {
+      idade--;
+    }
+    return idade >= 18 && idade <= 69;
+  }
+
+  @override void cadastrar() {
+    print("Doador $nome registrado no banco de sangue.");
+  }
 
 
 
