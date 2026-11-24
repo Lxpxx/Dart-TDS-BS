@@ -1,3 +1,4 @@
+import 'pessoa.dart';
 class Funcionario extends Pessoa {
   final int id;
   final String cargo;
